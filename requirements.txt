@@ -1,0 +1,5 @@
+Flask
+ultralyticsplus
+Pillow
+yolov5
+huggingface_hub

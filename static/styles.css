@@ -7,19 +7,23 @@
 
 
 body {
-    font-family: 'ValorantFont', Arial, sans-serif; /* Use the custom font */
-    background-color: #1e1e1e;
+    font-family: 'ValorantFont', Arial, sans-serif;
+    background:
+            linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* Dark overlay */
+             url('images/valo.jpg'); /* Path to your background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
     color: #ffffff;
     margin: 0;
     padding: 20px;
 }
 .container {
-    max-width: 1000px;
-    margin: 50px auto;
+    max-width: 600px;
+    margin: auto;
     padding: 20px;
-    background-color: #2c2c2e; /* Darker container */
+    background: rgba(0, 0, 0, 0.363); /* Slightly transparent for a layered effect */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
@@ -69,4 +73,41 @@ img {
     height: auto;
     border-radius: 5px;
     margin-top: 20px;
+}
+.file-input {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    background-color: #3c3c3c; /* Darker background for input */
+    color: #ffffff; /* White text for input */
+}
+
+.upload-button {
+    padding: 10px 20px;
+    background-color: #00b0ff; /* Teal */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.upload-button:hover {
+    background-color: #ff4655; /* Slightly darker teal on hover */
+}
+
+.result-title {
+    color: #00b0ff; /* Teal */
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 4px; /* Rounded corners for the image */
 }

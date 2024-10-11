@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorant Object Detection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shadcn-ui/1.0.0/shadcn-ui.min.css">
 </head>
 <body>
     <div class="container">
         <h1 class="title">Valorant Object Detection</h1>
         <form action="/predict" method="post" enctype="multipart/form-data" class="upload-form">
-            <input type="file" name="file" accept="image/*" class="file-input" required>
-            <button type="submit" class="upload-button">Upload</button>
+            <input type="file" name="file" id="file-upload" accept="image/*" class="file-input" required>
+            <label for="file-upload" class="custom-button">
+                Choose File
+            </label>
+            <button type="submit" class="custom-button">Upload</button>
         </form>
+        
 
         {% if output_image %}
         <h2 class="result-title">Detected Objects:</h2>

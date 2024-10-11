@@ -1,10 +1,36 @@
+@font-face {
+    font-family: 'ValorantFont';
+    src: url('fonts/valorant-font.ttf') format('truetype'); /* No '../' needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'ValorantFont', Arial, sans-serif; /* Use the custom font */
+    background-color: #1e1e1e;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #2c2c2e; /* Darker container */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-    color: #333;
+    color: #ff4655; /* Valorant red */
+    text-align: center;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #ff4655; /* Valorant red */
+    margin-top: 20px;
 }
 
 form {
@@ -13,10 +39,34 @@ form {
 
 input[type="file"],
 input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
     margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input[type="file"] {
+    background-color: #3a3a3c; /* Dark file input */
+    color: #e0e0e0; /* Light text */
+}
+
+input[type="submit"] {
+    background-color: #ff4655; /* Valorant red */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #e03e50; /* Darker red on hover */
 }
 
 img {
     max-width: 100%;
     height: auto;
+    border-radius: 5px;
+    margin-top: 20px;
 }

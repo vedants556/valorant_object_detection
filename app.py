@@ -12,10 +12,10 @@ app = Flask(__name__)
 model = YOLO('keremberke/yolov8m-valorant-detection')
 
 # Set model parameters
-model.overrides['conf'] = 0.25
-model.overrides['iou'] = 0.45
-model.overrides['agnostic_nms'] = False
-model.overrides['max_det'] = 1000
+model.overrides['conf'] = 0.35  # Increased confidence threshold
+model.overrides['iou'] = 0.5    # Increased IoU threshold
+model.overrides['agnostic_nms'] = True  # Enable class-agnostic NMS
+model.overrides['max_det'] = 500  # Reduced maximum detections
 
 @app.route('/')
 def index():
@@ -30,8 +30,8 @@ def predict():
     if file.filename == '':
         return "No selected file"
     
-    # Save the uploaded image
-    image_path = os.path.join('static', file.filename)
+    # Save the uploaded image in static/results
+    image_path = os.path.join('static', 'results', file.filename)
     file.save(image_path)
 
     # Perform inference
@@ -40,11 +40,11 @@ def predict():
     # Render the result
     render = render_result(model=model, image=image_path, result=results[0])
     output_filename = 'output_' + file.filename
-    output_path = os.path.join('static', output_filename)
+    output_path = os.path.join('static', 'results', output_filename)
     render.save(output_path)
 
     # Return the output image name for rendering
-    return render_template('upload.html', output_image=output_filename)
+    return render_template('upload.html', output_image='results/' + output_filename)
 
 
 if __name__ == '__main__':

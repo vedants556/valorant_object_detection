@@ -1,12 +1,2 @@
 # Ignore the entire static folder
-/static/
-
-# Ignore specific image file types anywhere in the project
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.bmp
-
-# Ignore all files in any directory named 'images'
-**/images/
+static/

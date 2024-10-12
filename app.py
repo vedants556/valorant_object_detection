@@ -1,10 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, abort
 from ultralyticsplus import YOLO, render_result
-from PIL import Image
 import os
-import yolov5
-import huggingface_hub
-
 
 app = Flask(__name__)
 
@@ -24,12 +20,17 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'file' not in request.files:
-        return "No file part"
+        abort(400, description="No file part")
     
     file = request.files['file']
     if file.filename == '':
-        return "No selected file"
+        abort(400, description="No selected file")
     
+    # Check if the file extension is allowed
+    allowed_extensions = {'png', 'jpg', 'jpeg', 'gif'}
+    if not file.filename.lower().split('.')[-1] in allowed_extensions:
+        abort(400, description="File type not allowed")
+
     # Save the uploaded image in static/results
     image_path = os.path.join('static', 'results', file.filename)
     file.save(image_path)
@@ -39,13 +40,12 @@ def predict():
 
     # Render the result
     render = render_result(model=model, image=image_path, result=results[0])
-    output_filename = 'output_' + file.filename
+    output_filename = f'output_{file.filename}'
     output_path = os.path.join('static', 'results', output_filename)
     render.save(output_path)
 
     # Return the output image name for rendering
-    return render_template('upload.html', output_image='results/' + output_filename)
-
+    return render_template('upload.html', output_image=f'results/{output_filename}')
 
 if __name__ == '__main__':
     app.run(debug=True)

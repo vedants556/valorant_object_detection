@@ -78,9 +78,13 @@ The **Valorant Object Detection** project is a Flask-based web application that 
 Here are some demo images to showcase the input and output of the object detection model:
 
 - **Input Image**: A raw image from the Valorant game.
-- **Output Image**: The same image with detected objects highlighted.
 
-_(Add sample images here)_
+![ziVLFkqLLBNFFUgZEQzMmj](https://github.com/user-attachments/assets/1b8f24af-aa73-421a-a096-014bb99382ce)
+
+
+- **Output Image**: The same image with detected objects highlighted.
+![image](https://github.com/user-attachments/assets/7ec80816-da22-4c09-a18b-095c7402642b)
+
 
 ## Contributing 🤝
 

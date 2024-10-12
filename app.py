@@ -12,10 +12,10 @@ app = Flask(__name__)
 model = YOLO('keremberke/yolov8m-valorant-detection')
 
 # Set model parameters
-model.overrides['conf'] = 0.25
-model.overrides['iou'] = 0.45
-model.overrides['agnostic_nms'] = False
-model.overrides['max_det'] = 1000
+model.overrides['conf'] = 0.35  # Increased confidence threshold
+model.overrides['iou'] = 0.5    # Increased IoU threshold
+model.overrides['agnostic_nms'] = True  # Enable class-agnostic NMS
+model.overrides['max_det'] = 500  # Reduced maximum detections
 
 @app.route('/')
 def index():

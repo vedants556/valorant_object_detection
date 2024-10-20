@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorant Object Detection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1 class="title">Valorant Object Detection</h1>
         <form action="/predict" method="post" enctype="multipart/form-data" class="upload-form">
-            <input type="file" name="file" id="file-upload" accept="image/*" class="file-input" required>
-            <label for="file-upload" class="custom-button">
-                Choose File
-            </label>
-            <button type="submit" class="custom-button">Upload</button>
+            <div class="button-container">
+                <input type="file" name="file" id="file-upload" accept="image/*" class="file-input" required>
+                <label for="file-upload" class="custom-button">
+                    Choose File
+                </label>
+                <button type="submit" class="custom-button">Upload</button>
+            </div>
         </form>
         
-
         {% if output_image %}
         <h2 class="result-title">Detected Objects:</h2>
         <img src="{{ url_for('static', filename=output_image) }}" alt="Detection Result" class="result-image">
